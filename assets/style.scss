@@ -1,1 +1,8 @@
-// Put your SCSS here.
+a.external-login-block.ng-star-inserted {
+    &::before {
+        content: url("https://goteo.org/assets/img/goteo-white.svg");
+        width: 20px;
+        height: 50px;
+        width: 100%;
+    }
+}
