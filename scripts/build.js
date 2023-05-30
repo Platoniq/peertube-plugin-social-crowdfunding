@@ -5,7 +5,6 @@ const clientFiles = [
   // Add here your client files, without the file extension:
   'common-client-plugin',
   'video-watch-client-plugin',
-  'video-edit-client-plugin',
   'video-channel-client-plugin'
 ]
 
