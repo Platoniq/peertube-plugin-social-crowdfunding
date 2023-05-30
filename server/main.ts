@@ -1,8 +1,6 @@
 import type { RegisterServerOptions } from '@peertube/peertube-types'
 
 async function register ({ peertubeHelpers, registerSetting }: RegisterServerOptions): Promise<void> {
-  peertubeHelpers.logger.info('Hello world')
-
   registerSetting({
     name: 'goteo-url',
     label: 'Goteo URL',
