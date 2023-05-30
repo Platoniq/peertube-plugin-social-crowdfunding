@@ -6,6 +6,7 @@ const clientFiles = [
   'common-client-plugin',
   'video-watch-client-plugin',
   'video-edit-client-plugin',
+  'video-channel-client-plugin'
 ]
 
 const configs = clientFiles.map(f => ({

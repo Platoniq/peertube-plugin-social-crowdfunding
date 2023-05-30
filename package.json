@@ -27,7 +27,12 @@
         "video-edit"
       ]
     },
-
+    {
+      "script": "dist/client/video-channel-client-plugin.js",
+      "scopes": [
+        "video-channel"
+      ]
+    }
   ],
   "css": [
     "dist/assets/style.css"
