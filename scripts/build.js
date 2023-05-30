@@ -4,7 +4,8 @@ const esbuild = require('esbuild')
 const clientFiles = [
   // Add here your client files, without the file extension:
   'common-client-plugin',
-  'video-watch-client-plugin'
+  'video-watch-client-plugin',
+  'video-edit-client-plugin',
 ]
 
 const configs = clientFiles.map(f => ({

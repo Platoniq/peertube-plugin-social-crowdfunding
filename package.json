@@ -20,7 +20,14 @@
       "scopes": [
         "video-watch"
       ]
-    }
+    },
+    {
+      "script": "dist/client/video-edit-client-plugin.js",
+      "scopes": [
+        "video-edit"
+      ]
+    },
+
   ],
   "css": [
     "dist/assets/style.css"
