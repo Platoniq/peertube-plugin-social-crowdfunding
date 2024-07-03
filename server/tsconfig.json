@@ -1,24 +1,24 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
   "compilerOptions": {
-		"moduleResolution": "nodenext", // Tell tsc to look in node_modules for modules
-		"strict": true, // That implies alwaysStrict, noImplicitAny, noImplicitThis
+    "moduleResolution": "nodenext", // Tell tsc to look in node_modules for modules
+    "strict": true, // That implies alwaysStrict, noImplicitAny, noImplicitThis
 
-		"alwaysStrict": true, // should already be true because of strict:true
-		"noImplicitAny": true, // should already be true because of strict:true
-		"noImplicitThis": true, // should already be true because of strict:true
-		"noImplicitReturns": true,
-		"strictBindCallApply": true, // should already be true because of strict:true
-		"noUnusedLocals": true,
+    "alwaysStrict": true, // should already be true because of strict:true
+    "noImplicitAny": true, // should already be true because of strict:true
+    "noImplicitThis": true, // should already be true because of strict:true
+    "noImplicitReturns": true,
+    "strictBindCallApply": true, // should already be true because of strict:true
+    "noUnusedLocals": true,
+    "useUnknownInCatchVariables": false,
+    "removeComments": true,
+    "sourceMap": true,
 
-		"removeComments": true,
-		"sourceMap": true,
-
-		"outDir": "../dist/server/",
-		"paths": {}
-	},
-	"include": [
-		"./**/*"
-	],
-	"exclude": []
+    "outDir": "../dist/server/",
+    "paths": {}
+  },
+  "include": [
+    "./**/*"
+  ],
+  "exclude": []
 }
