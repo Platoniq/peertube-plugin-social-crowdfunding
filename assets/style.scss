@@ -1,41 +1,47 @@
 a.external-login-block.ng-star-inserted {
-    &::before {
-        content: url("https://goteo.org/assets/img/goteo-white.svg");
-        height: 50px;
-        width: 100%;
-    }
+  &::before {
+    content: url("https://goteo.org/assets/img/goteo-white.svg");
+    height: 50px;
+    width: 100%;
+  }
 }
 
 a#btn-fund-goteo-campaign {
-    margin: 2em;
+  margin: 2em;
 }
 
-div.goteo-project-reward-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+section.goteo-project-reward-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-    .goteo-project-reward {
-        margin: 1em;
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 25em;
+  article.goteo-project-reward {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 25em;
 
-        .goteo-project-reward-amount {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .goteo-project-reward-description {
-            font-size: 0.8em;
-
-            img {
-                width: 100%;
-            }
-        }
-
-        a.btn {
-            cursor: pointer;
-        }
+    .goteo-project-reward-amount {
+      font-size: 1.5em;
+      font-weight: bold;
     }
+
+    .goteo-project-reward-description {
+      font-size: 0.8em;
+      text-wrap: pretty;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    div {
+      display: flex;
+      justify-content: center;
+
+      a.btn {
+        cursor: pointer;
+      }
+    }
+  }
 }
