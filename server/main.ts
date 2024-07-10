@@ -15,12 +15,21 @@ async function register ({
   registerHook,
   storageManager
 }: RegisterServerOptions): Promise<void> {
-  const goteoURLSetting: RegisterServerSettingOptions = {
-    name: 'goteo-url',
-    label: 'Goteo URL',
+  const goteoAPIURLSetting: RegisterServerSettingOptions = {
+    name: 'goteo-api-url',
+    label: 'Goteo API URL',
     type: 'input',
-    private: true,
+    private: false,
     default: 'https://api.goteo.org/v1'
+  }
+
+  const goteoPlatformURLSetting: RegisterServerSettingOptions = {
+    name: 'goteo-platform-url',
+    label: 'Goteo Platform URL',
+    descriptionHTML: 'This is the platform URL (i.e. https://goteo.org)',
+    type: 'input',
+    private: false,
+    default: 'https://goteo.org'
   }
 
   const goteoAPIUserSetting: RegisterServerSettingOptions = {
@@ -39,7 +48,8 @@ async function register ({
     default: ''
   }
 
-  registerSetting(goteoURLSetting)
+  registerSetting(goteoPlatformURLSetting)
+  registerSetting(goteoAPIURLSetting)
   registerSetting(goteoAPIUserSetting)
   registerSetting(goteoAPIKeySetting)
 
@@ -48,9 +58,11 @@ async function register ({
     try {
       const username = await settingsManager.getSetting('goteo-api-user') as string
       const apikey = await settingsManager.getSetting('goteo-api-key') as string
+      const apiUrl = await settingsManager.getSetting('goteo-api-url') as string
 
       if (username && apikey) {
-        const response = await fetch('https://api.goteo.org/v1/login', {
+
+        const response = await fetch(`${apiUrl}/login`, {
           headers: {
             Authorization: 'Basic ' + btoa(username + ':' + apikey)
           }
@@ -70,9 +82,10 @@ async function register ({
     try {
       const username = await settingsManager.getSetting('goteo-api-user') as string
       const apikey = await settingsManager.getSetting('goteo-api-key') as string
+      const apiUrl = await settingsManager.getSetting('goteo-api-url') as string
       const project = req.params.id
 
-      const response = await fetch(`https://api.goteo.org/v1/projects/${project}`, {
+      const response = await fetch(`${apiUrl}/projects/${project}`, {
         headers: {
           Authorization: 'Basic ' + btoa(`${username}:${apikey}`)
         }
@@ -80,6 +93,38 @@ async function register ({
 
       const data: any = await response.json()
       return res.send(data.rewards)
+    } catch (error) {
+      const message = error.message as string
+      return res.status(500).send({ error: 'Goteo API server error catch' + message })
+    }
+  })
+
+  router.get('/goteo/project/:id', async (req, res) => {
+    try {
+      const username = await settingsManager.getSetting('goteo-api-user') as string
+      const apikey = await settingsManager.getSetting('goteo-api-key') as string
+      const apiUrl = await settingsManager.getSetting('goteo-api-url') as string
+      const project = req.params.id
+
+      const response = await fetch(`${apiUrl}/projects/${project}`, {
+        headers: {
+          Authorization: 'Basic ' + btoa(`${username}:${apikey}`)
+        }
+      })
+
+      const data: any = await response.json()
+      const projectData = {
+        id: data.id,
+        name: data.name,
+        description: data.description,
+        amount: data.amount,
+        about: data.about,
+        imgUrl: data['image-url'],
+        minimum: data.minimum,
+        currency: data.currency
+      }
+
+      return res.send(projectData)
     } catch (error) {
       const message = error.message as string
       return res.status(500).send({ error: 'Goteo API server error catch' + message })
