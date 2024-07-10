@@ -5,11 +5,11 @@ import type {
 } from '@peertube/peertube-types'
 
 async function register (
-  { registerVideoField }: RegisterClientOptions
+  { registerVideoField, peertubeHelpers }: RegisterClientOptions
 ): Promise<void> {
   const enableGoteoOptions: RegisterClientFormFieldOptions = {
     name: 'enable-goteo-campaign',
-    label: 'Enable Goteo Campaign',
+    label: await peertubeHelpers.translate('Enable Goteo Campaign'),
     descriptionHTML:
       'This options enables the connection with a campaign in the CrowdFunding platform Goteo.org',
     type: 'input-checkbox',
@@ -18,7 +18,7 @@ async function register (
 
   const campaignGoteoOptions: RegisterClientFormFieldOptions = {
     name: 'goteo-campaign',
-    label: 'Goteo Campaign ID',
+    label: await peertubeHelpers.translate('Goteo Campaign ID'),
     descriptionHTML: 'This is the ID of the campaign in Goteo.org',
     type: 'input',
     default: ''
