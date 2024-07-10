@@ -4,12 +4,14 @@ async function register ({ registerHook, peertubeHelpers }: RegisterClientOption
   registerHook({
     target: 'action:video-channel-videos.video-channel.loaded',
     handler: async () => {
-      const elem = document.createElement('a')
+      const elem: HTMLAnchorElement = document.createElement('a')
 
+      const settings = await peertubeHelpers.getSettings()
+      const platformURL = settings['goteo-platform-url'] as string
       elem.id = 'btn-fund-goteo-campaign'
       elem.className = 'btn btn-primary'
       elem.innerHTML = await peertubeHelpers.translate('Donate').then(translations => translations)
-      elem.href = 'https://goteo.org/'
+      elem.href = platformURL
       elem.target = '_blank'
 
       const $videoChannelList = document.getElementsByTagName('my-video-channel-videos')

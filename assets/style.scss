@@ -10,6 +10,28 @@ a#btn-fund-goteo-campaign {
   margin: 2em;
 }
 
+section.project-details {
+
+  .col-md-4 {
+    text-align: right;
+
+    img {
+      border-radius: 25%;
+    }
+  }
+
+  .amount-details {
+    div {
+      text-align: center;
+
+      span {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 section.goteo-project-reward-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
