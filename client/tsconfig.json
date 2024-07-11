@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-    "module": "es6",
-		"moduleResolution": "node",
+    "module": "NodeNext",
+		"moduleResolution": "nodenext",
 		// target:"es2015" is the target for Peertube client code. Using the same.
 		// Not sure it is important, as ESBuild will recompile after.
     "target": "es2015",
@@ -16,7 +16,7 @@
 		"strictBindCallApply": true, // should already be true because of strict:true
 		"noUnusedLocals": true,
 		"allowSyntheticDefaultImports": true, // Seems necessary for peertube types to work
-		"isolatedModules": true, // Needed by esbuild https://esbuild.github.io/content-types/#isolated-modules
+		"isolatedModules": true, // Needed by esbuild https://esbuild.github.io/content-types/#isolated-modulestscontscon
 		"esModuleInterop": true, // Needed by esbuild https://esbuild.github.io/content-types/#es-module-interop
     "outDir": "../dist/client",
 		"paths": {}
